@@ -1,0 +1,93 @@
+html.hn-dark-theme {
+  --text: #e1e1e1;
+  --secondary-text: #878787;
+  --background: #0f0f0f;
+  --primary: #ad4500;
+  --secondary: #1e1e1e;
+
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+}
+
+/* Tables and structure */
+html.hn-dark-theme table,
+html.hn-dark-theme tr,
+html.hn-dark-theme .fatitem {
+  background-color: var(--secondary) !important;
+  color: var(--text) !important;
+}
+
+html.hn-dark-theme table {
+  border-collapse: collapse;
+}
+
+html.hn-dark-theme .comtr {
+  border-top: 1px solid var(--secondary) !important;
+}
+
+/* Links and text */
+html.hn-dark-theme .titleline > a {
+  color: var(--text) !important;
+}
+
+html.hn-dark-theme a,
+html.hn-dark-theme a:visited,
+html.hn-dark-theme .subtext,
+html.hn-dark-theme .subtext a {
+  color: var(--secondary-text) !important;
+}
+
+html.hn-dark-theme .morelink {
+  color: var(--primary) !important;
+}
+
+/* Comments */
+html.hn-dark-theme .comment,
+html.hn-dark-theme .c00 {
+  color: var(--text) !important;
+}
+
+/* Form elements */
+html.hn-dark-theme input[type="text"],
+html.hn-dark-theme input[type="password"],
+html.hn-dark-theme textarea {
+  background-color: var(--secondary) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--secondary-text) !important;
+}
+
+html.hn-dark-theme input[type="submit"] {
+  background-color: var(--primary) !important;
+  color: var(--text) !important;
+  border: none !important;
+}
+
+/* Theme switcher styles */
+#hn-theme-switcher {
+  background-color: var(--primary);
+  color: var(--text);
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: pointer;
+  outline: none;
+  margin-left: 10px;
+}
+
+#hn-theme-switcher:hover {
+  background-color: var(--secondary);
+}
+
+#hn-theme-switcher:focus {
+  box-shadow: 0 0 3px var(--primary);
+}
+
+html.hn-dark-theme #hn-theme-switcher {
+  background-color: var(--secondary);
+  border: none;
+}
+
+html.hn-dark-theme #hn-theme-switcher:hover {
+  background-color: var(--primary);
+}
