@@ -5,7 +5,10 @@
   const THEME_KEY = "hnTheme";
   const DARK = "dark";
   const LIGHT = "light";
+  const SYSTEM = "system";
   const DARK_CLASS = "hn-dark-theme";
+  let systemThemeListener = null;
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
   if (document.getElementById("hn-theme-switcher")) {
     return;
@@ -14,7 +17,7 @@
   function readThemeSync() {
     try {
       const fromLS = window.localStorage.getItem(THEME_KEY);
-      if (fromLS === "dark" || fromLS === "light") return fromLS;
+      if ([DARK, LIGHT, SYSTEM].includes(fromLS)) return fromLS;
     } catch (_) {}
     return null;
   }
@@ -29,13 +32,34 @@
     }
   }
 
+  function getSystemTheme() {
+    return mediaQuery.matches ? DARK : LIGHT;
+  }
+
   function applyTheme(theme) {
-    document.documentElement.classList.toggle(DARK_CLASS, theme === DARK);
+    const effectiveTheme = theme === SYSTEM ? getSystemTheme() : theme;
+    document.documentElement.classList.toggle(DARK_CLASS, effectiveTheme === DARK);
   }
 
   const earlyTheme = readThemeSync();
-  if (earlyTheme === DARK) {
-    applyTheme(DARK);
+  if (earlyTheme === DARK || (earlyTheme === SYSTEM && getSystemTheme() === DARK)) {
+    applyTheme(earlyTheme || DARK);
+  }
+
+  function setupSystemThemeListener() {
+    if (systemThemeListener) {
+      mediaQuery.removeEventListener("change", systemThemeListener);
+    }
+
+    systemThemeListener = () => {
+      browserAPI.storage.local.get([THEME_KEY]).then((result) => {
+        if (result[THEME_KEY] === SYSTEM) {
+          applyTheme(SYSTEM);
+        }
+      });
+    };
+
+    mediaQuery.addEventListener("change", systemThemeListener);
   }
 
   function createThemeSwitcher() {
@@ -45,12 +69,17 @@
     dropdown.innerHTML = `
       <option value="light">Light</option>
       <option value="dark">Dark</option>
+      <option value="system">System</option>
     `;
 
     dropdown.addEventListener("change", (e) => {
       const theme = e.target.value;
       applyTheme(theme);
       persistTheme(theme);
+
+      if (theme === SYSTEM) {
+        setupSystemThemeListener();
+      }
     });
 
     return dropdown;
@@ -74,6 +103,10 @@
       const dropdown = createThemeSwitcher();
       dropdown.value = theme;
       addSwitcherToPage(dropdown);
+
+      if (theme === SYSTEM) {
+        setupSystemThemeListener();
+      }
     });
   }
 
