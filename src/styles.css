@@ -17,12 +17,17 @@ html.hn-dark-theme .fatitem {
   color: var(--text) !important;
 }
 
-html.hn-dark-theme table {
-  border-collapse: collapse;
-}
-
 html.hn-dark-theme .comtr {
   border-top: 1px solid var(--secondary) !important;
+}
+
+html.hn-dark-theme td[style*="text-align:right"] .pagetop {
+  color: var(--secondary-text) !important;
+}
+
+html.hn-dark-theme .topsel,
+html.hn-dark-theme .topsel a {
+  color: var(--text) !important;
 }
 
 /* Links and text */
@@ -54,12 +59,14 @@ html.hn-dark-theme textarea {
   background-color: var(--secondary) !important;
   color: var(--text) !important;
   border: 1px solid var(--secondary-text) !important;
+  border-radius: 2px !important;
 }
 
 html.hn-dark-theme input[type="submit"] {
   background-color: var(--primary) !important;
   color: var(--text) !important;
-  border: none !important;
+  border: 1px solid var(--primary) !important;
+  border-radius: 4px !important;
 }
 
 /* Theme switcher styles */
