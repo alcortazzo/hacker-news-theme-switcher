@@ -1,22 +1,17 @@
 # Hacker News Theme Switcher
 
-Simple Firefox add-on to switch Hacker News between Light, Dark, or System theme. Adds a small dropdown. Nothing else.
+Simple Firefox and Chrome extension to switch Hacker News between Light, Dark, or System theme. Adds a small dropdown. Nothing else.
 
 ## Install
 
-Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/hacker-news-theme-switcher/
-
-### Manual (temporary) install
-
-1. Clone this repo
-2. Open `about:debugging` → This Firefox → Load Temporary Add-on
-3. Pick `src/manifest.json`
+-   Firefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/hacker-news-theme-switcher/
+-   Chrome Web Store: https://chromewebstore.google.com/detail/hacker-news-theme-switche/elkikjmnlnadlcebiooibcplnenjglip
 
 ## Features
 
-- Light / Dark / System modes
-- Saves your choice
-- System option tracks OS theme changes
+-   Light / Dark / System modes
+-   Saves your choice
+-   System option tracks OS theme changes
 
 ## Screenshots
 
